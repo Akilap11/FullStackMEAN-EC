@@ -1,0 +1,62 @@
+Review quizes on Coursera site;)
+
+MEAN- 
+MongoDB- NoSQL database management system
+Express.js- Web application framework
+Angular - Front-end mobile and web web application framework
+Node.js- JavaScript runtime environment that executes JavaScript code outside a web browser
+
+Httprequest(angular)-> node.js,express.js-> query-> mongodb-> dataset-> node.js,express.js->httpresponse(angular)
+
+Server can create from express.js that running on node.js
+
+Chapter 1 NODE.JS--------------------------------------------
+
+*run any js file
+node <file name>.js
+
+*open source JavaScript runtime environment
+
+*Node.js is a single-threaded model that uses an event-driven, 
+non-blocking I/O model to provide high performance and scalability.
+
+node --version
+npm --version
+
+*to initialize npm package
+npm init
+this will create package.json file (manage dependencies)
+
+*to install packages
+npm install <package name>
+this will create package-lock and node_modules folder and add dependencies in package.json
+we dont usually edit these package files. just use npm
+npm uninstall <package name>
+
+*EVENT LOOP CYCLE (node.js)
+request-> event loop-> callback queue(backend)-> event loop-> request
+
+*node.js modules 
+any .js files
+
+*to import modules
+let info=require('./model.js')
+
+*to export modules
+module.exports=info
+
+*create a http Server
+const http=require('http')
+const server=http.createServer((request,response)=>{
+    response.writeHead(200,{'Content-Type':'text/html'});
+    response.write('<h1>Welcome to Node.js!</h1>');
+    response.end();
+});
+
+server.listen(3000,()=>
+    console.log('http://localhost:3000')
+);
+
+
+
+
