@@ -58,5 +58,13 @@ server.listen(3000,()=>
 );
 
 
+Chapter 2 Express.JS--------------------------------------------
 
+npm install express
+npm install express --no-save
+npm uninstall express
+
+*using yarn
+yarn add express
+yarn remove express
 
