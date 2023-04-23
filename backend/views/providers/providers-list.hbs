@@ -26,12 +26,12 @@
             <td>{{company.company_name}}</td>
             <td>
 
-              <a href="/providers/info/{{id}}" class="btn btn-info btn-sm">More info...</a>
+              <a href="/providers/details/{{id}}" class="btn btn-info btn-sm">More info...</a>
               <a href="/providers/edit/{{id}}" class="btn btn-secondary btn-sm">Edit</a>
-              <a href="#my{{id}}" class="btn btn-danger btn-sm" data-toggle="modal">Delete</a>
+              <a href="#myModal{{id}}" class="btn btn-danger btn-sm" data-toggle="modal">Delete</a>
 
               <!-- Modal Window - Confirmation -->
-              <div id="my{{id}}" class="modal fade">
+              <div id="myModal{{id}}" class="modal fade">
                 <div class="modal-dialog modal-confirm">
                   <div class="modal-content">
                     <div class="modal-header">
