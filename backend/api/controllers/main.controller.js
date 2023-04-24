@@ -1,4 +1,27 @@
+
 var providers=require('../models/providers.models');
+
+//util functions
+//check if empty is empty
+function isEmptyList(obj){
+    return (!obj || 0 === obj.length|| Object.keys(obj).length === 0);
+}
+
+//check for existin gprovider
+function existsProvider(id){
+    return providers.find(provider=>provider.id==id)
+}
+
+//generate a unique provier id
+function getUniqueId(providers){
+    let min=100000;
+    let max=999999;
+    do{
+        var id=Math.floor(Math.random()*(max-min)+min);
+    }while(existsProvider(id));
+    return id;
+}
+
 
 //CRUD - create(POST) , Read(GET), Update(PUT), Delete(DELETE)
 
@@ -6,29 +29,18 @@ var providers=require('../models/providers.models');
 //uri: /api/providers
 module.exports.create=function(req,res){
     //create a random id
-let min=100000;
-let max=999999;
-let id=Math.floor(Math.random()*(max-min)+min);
-//create new provider object
-let provider={  
-    id:id,
-    firstname:req.body.firstname,
-    lastname:req.body.lastname,
-    position:req.body.position,
-
-    company:{
-            
-        company_name:req.body.company.company_name,
-        address:req.body.company.address,
-        address2:req.body.company.address2,
-        city:req.body.company.city,
-        state:req.body.company.state,
-        phone:req.body.company.phone,
-        email:req.body.company.email,
-        description:req.company.body.description,
-        tagline:req.body.company.tagline,
-        }
+    if(isEmptyList(providers)){
+        providers=[];
     }
+    var id=req.body.id;
+    if(existsProvider(id)){
+        res.status(400);
+        res.send('Duplicate id not allowed'); 
+        id=getUniqueId(); //unique id
+    }
+    var provider=req.body;
+    provider.id=id;
+
     //add new provider to list
     providers.push(provider);
     res.status(201);
@@ -40,6 +52,10 @@ let provider={
 //GetAll
 //uri: /api/providers
 module.exports.readAll=function(req,res){
+    if(isEmptyList(providers)){
+        res.status(404);
+        res.send("List is empty");
+    }
     res.status(200);
     res.send(providers);
 }
@@ -48,6 +64,10 @@ module.exports.readAll=function(req,res){
 //Getone
 //uri: /api/providers/123
 module.exports.readOne=function(req,res){
+    if(isEmptyList(providers)){
+        res.status(404);
+        res.send("List is empty");
+    }
     let id=req.params.id;
     let provider=providers.find(provider=>provider.id==id);
     res.status(200);
@@ -59,6 +79,10 @@ module.exports.readOne=function(req,res){
 //Put
 //uri: /api/providers/123
 module.exports.update=function(req,res){
+    if(isEmptyList(providers)){
+        res.status(404);
+        res.send("List is empty,cannot update");
+    }
     let id=req.params.id;
     let provider=providers.find(provider=>provider.id==id);
     provider.firstname=req.body.firstname;
@@ -82,6 +106,10 @@ module.exports.update=function(req,res){
 //delete one
 //uri: /api/providers
 module.exports.deleteOne=function(req,res){
+    if(isEmptyList(providers)){
+        res.status(404);
+        res.send("List is empty,cannot delete");
+    }
     let id=req.params.id;
     let provider=providers.find(provider=>provider.id==id);
     let idx=providers.indexOf(provider);
@@ -96,6 +124,10 @@ module.exports.deleteOne=function(req,res){
 //delete all
 //uri: /api/providers
 module.exports.deleteAll=function(req,res){
+    if(isEmptyList(providers)){
+        res.status(404);
+        res.send("List is empty,cannot delete");
+    }
     providers=[];
     res.status(200);
     res.send("All providers deleted");
