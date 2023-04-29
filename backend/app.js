@@ -9,10 +9,6 @@ var usersRouter = require('./routes/users');
 var providerRouter=require('./routes/providers');
 var apiRouter=require('./api/routes/main.router');
 
-//to DO-remove later
-const db=require('./api/db/db');
-
-
 
 var app = express();
 
@@ -30,6 +26,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/providers',providerRouter);
 app.use('/api',apiRouter);
+
+app.use('/*',indexRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
