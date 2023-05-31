@@ -76,5 +76,9 @@ npm init
 npx express -generator --view=hbs  
 hbs is the template(hbs,ejs,pug)
 
+Chapter 3 Angular--------------------------------------------
+*install angular
+npm install -g @angular/cli
 
-
+*run angular
+ng serve -o 
