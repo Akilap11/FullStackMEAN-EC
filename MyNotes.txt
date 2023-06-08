@@ -77,8 +77,15 @@ npx express -generator --view=hbs
 hbs is the template(hbs,ejs,pug)
 
 Chapter 3 Angular--------------------------------------------
-*install angular
+ng version
+
+*install angular cli
 npm install -g @angular/cli
 
 *run angular
 ng serve -o 
+go to browser and type localhost:4200
+ng serve
+
+*create new angular component
+ng g c about 

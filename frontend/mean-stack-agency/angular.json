@@ -91,11 +91,60 @@
             ],
             "scripts": []
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "mean-stack-agency:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "mean-stack-agency:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "mean-stack-agency:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "mean-stack-agency:serve:development"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "mean-stack-agency:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "mean-stack-agency:serve:production"
+            }
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "f4b3de57-8697-41b9-8549-956b5f21c9d3"
+    "analytics": "a005aab7-99e3-461f-9c90-b3251f9fc4a8",
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@schematics/angular"
+    ]
   }
 }
