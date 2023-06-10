@@ -5,17 +5,28 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
+
+import { AboutModule } from './about/about.module';
+import { UserModule } from './user/user.module';
+import { ProvidersComponent } from './providers/providers.component';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    ProvidersComponent,
+    HomeComponent,
+    ContactComponent,
+    NotfoundComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule // <-- register FormsModule with our app
+    FormsModule, // <-- register FormsModule with our app
+    AboutModule, UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

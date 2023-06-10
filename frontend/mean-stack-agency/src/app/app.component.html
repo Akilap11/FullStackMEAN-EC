@@ -1,5 +1,4 @@
 
-
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <img
@@ -25,22 +24,10 @@
 
 <div class="content" role="main">
 
-  <h1 style="color:red">{{title}}</h1>
-
-  <h1 style="{{red}}">{{title}}</h1>
-
-  <h2 [style]="green">{{sum()}}</h2>
-
-  <input #itsid type="text" (keyup)="clickMe(itsid.value)">
-  <button (click)="clickMe(itsid.value)">Click Me</button>
-  <h3>{{message}}</h3>
-
-  <input #itsid type="text" [(ngModel)]="message">
-  <button (click)="clickMe('Hiiii')">Click Me</button>
-  <h3>{{message}}</h3>
-
-
+ 
+  <router-outlet></router-outlet>
 
 </div>
 
-<router-outlet></router-outlet>
+
+
